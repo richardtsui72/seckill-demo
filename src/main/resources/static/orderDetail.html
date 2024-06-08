@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>訂單詳情</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- jquery -->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+    <!-- layer -->
+    <script type="text/javascript" src="/layer/layer.js"></script>
+    <!-- common.js -->
+    <script type="text/javascript" src="/js/common.js"></script>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading">秒殺訂單詳情</div>
+    <table class="table" id="order">
+        <tr>
+            <td>商品名稱</td>
+            <td id="goodsName" colspan="3"></td>
+        </tr>
+        <tr>
+            <td>商品圖片</td>
+            <td colspan="2"><img id="goodsImg" width="200" height="200" /></td>
+        </tr>
+        <tr>
+            <td>訂單價格</td>
+            <td colspan="2" id="goodsPrice"></td>
+        </tr>
+        <tr>
+            <td>下單時間</td>
+            <td id="createDate" colspan="2"></td>
+        </tr>
+        <tr>
+            <td>訂單狀態</td>
+            <td >
+               <!-- <span if="${order.status eq 0}">未支付</span>
+                <span if="${order.status eq 1}">待发货</span>
+                <span if="${order.status eq 2}">已发货</span>
+                <span if="${order.status eq 3}">已收货</span>
+                <span if="${order.status eq 4}">已退款</span>
+                <span if="${order.status eq 5}">已完成</span> -->
+            </td>
+            <td>
+                <button class="btn btn-primary btn-block" type="submit" id="payButton">立即付款</button>
+            </td>
+        </tr>
+        <tr>
+            <td>收貨人</td>
+            <td colspan="2">XXX  18012345678</td>
+        </tr>
+        <tr>
+            <td>收貨地址</td>
+            <td colspan="2">台北市信義路5段123號</td>
+        </tr>
+    </table>
+</div>
+<script>
+
+
+
+
+</script>
+
+
+</body>
+</html>
