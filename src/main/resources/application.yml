@@ -1,1 +1,100 @@
+spring:
+  #r靜態資源處理
+  resources:
+    #啟動默認靜態資源處理,默認啟動
+    add-mappings: true
+    cache:
+      cachecontrol:
+        #緩存響應時間,單位秒
+        max-age: 3600
+    chain:
+      #資源配鏈啟動緩存,默認啟動
+      cache: true
+      #啟動資源鏈,默認禁用
+      enabled: true
+      #啟用壓縮資源(gzip,brotil) 解析,默認禁用
+      compressed: true
+      #啟用h5應用緩存,默認禁用
+      html-application-cache: true
+    static-locations: classpath:/static/
 
+  thymeleaf: null #thymeleaf配置
+  cache: false #關閉緩存
+  datasource: #數據源配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seckill?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 1234
+    hikari:
+      pool-name: DateHikariCP #連接池名
+      minimum-idle: 5 #最小空閒連接處
+      idle-timeout: 1800000 #空閒連接存活最大時間,默認600000(10分鐘)
+      maximum-pool-size: 10 #最大連接數,默認10
+      auto-commit: true #從連接池返回自動提交
+      max-lifetime: 1800000 #連接最大存活時間,0表示永久存活,默認1800000(30分鐘)
+      connection-timeout: 30000 #連接超時時間,默認30000(30秒)
+      connection-test-query: SELECT 1 #測試連接是否可用的查詢語句
+  #redis配置
+  redis:
+    #服務器地址
+    host: 172.20.10.11
+    #端口
+    port: 6379
+    #數據庫
+    database: 0
+    #超時時間
+    timeout: 10000ms
+    lettuce :
+      pool:
+        #最大連接數,默認8
+        max-active: 8
+        #最大連接阻塞等待時間,默認-1
+        max-wait: 10000ms
+        #最大空閒連接,默認8
+        max-idle: 200
+        #最小空閒連接,默認0
+        min-idle: 5
+  #RabbitMQ
+  rabbitmq:
+      #服務器
+    host: 172.20.10.3
+      #端口
+    port: 5672
+      #用戶名
+    username: guest
+      #密碼
+    password: guest
+      #虛擬主機
+    virtual-host: /
+  listener:
+   simple:
+      #消費者最小數量
+      concurrency: 10
+      #消費者最大數量
+      max-concurrency: 10
+      #限制消費每次只處理一條消息,處理完再繼續下一條消息
+      prefetch: 1
+      #啟動時是否默認啟動容器,默認true
+      auto-startup: true
+      #被拒絕時重新進入隊列
+      default-requeue-rejected: true
+  template:
+    retry:
+          #發布重試,默認false
+          enabled: true
+          #重試時間,默認1000ms
+          initial-interval: 1000ms
+          #重試最大次數,默認3次
+          max-attempts: 3
+          #重試最大間隔時間,默認10000ms
+          max-interval: 10000ms
+          #t重試的間隔乘數. 比如配2.0 , 第一次就等10s, 第二次就等20s, 第三次就等40s
+          multiplier: 1
+
+
+mybatis-plus: #Mybatis-plus配置
+  mapper-location: classpath*:/mapper/*Mapper.xml #配置Mapper.xml映射文件
+  type-aliases-package: com.xxxx.seckill.pojo #配置MyBatis數據返回類別名(默認別名是類名)
+logging: #MyBatis SQL打印(方法接口所在的包,不是Mapper.xml所在的包)
+  level:
+    com.xxxx.seckill.mapper: debug
